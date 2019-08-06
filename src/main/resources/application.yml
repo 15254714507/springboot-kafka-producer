@@ -1,0 +1,12 @@
+server:
+  port: 8080
+spring:
+  kafka:      
+    bootstrap-servers: 192.168.137.130:9092   #kafka的IP:端口，可以多个
+    template:
+      default-topic: my-replicated-topic  #kafka默认主题
+    listener:             #指定listen容器中的线程数，用于提高并发量
+      concurrency: 5  
+    producer:
+      batch-size: 1000 # 每次批量发送消息的数量
+      retries: 3
